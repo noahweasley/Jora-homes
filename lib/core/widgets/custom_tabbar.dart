@@ -127,7 +127,7 @@ class BottomBarIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onChanged(index),
-      child: MyCircleAvatar(
+      child: UniversalCircle(
         backgroundColor: currentIndex == index ? AppColor.primary : AppColor.tabBarSelectedBackground,
         child: Icon(
           icon,

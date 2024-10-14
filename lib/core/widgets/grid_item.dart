@@ -39,7 +39,7 @@ class GridItem extends StatelessWidget {
                   height: 40.r,
                   width: double.maxFinite,
                   child: LayoutBuilder(
-                    builder: (context, constraint) {
+                    builder: (context, _) {
                       return Row(
                         children: [
                           Expanded(
@@ -51,7 +51,7 @@ class GridItem extends StatelessWidget {
                               style: AppStyle.body2.apply(color: Colors.black),
                             ),
                           ),
-                          MyCircleAvatar(
+                          UniversalCircle(
                             size: 40.r,
                             backgroundColor: AppColor.tabBarIconColor,
                             child: const Icon(
@@ -63,10 +63,12 @@ class GridItem extends StatelessWidget {
                       );
                     },
                   ),
-                ).animate().slideX(
+                ).animate().scaleX(
                       delay: math.Random().nextInt(3).seconds,
                       duration: 0.9.seconds,
                       begin: -1,
+                      alignment: Alignment.centerLeft,
+                      curve: Curves.easeIn
                     ),
               ),
             )

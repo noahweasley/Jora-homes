@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyCircleAvatar extends StatelessWidget {
+class UniversalCircle extends StatelessWidget {
   final Color? backgroundColor;
   final double? size;
   final Widget? child;
   final bool isRect;
   
-  const MyCircleAvatar({
+  const UniversalCircle({
     super.key,
     this.backgroundColor,
     this.size,

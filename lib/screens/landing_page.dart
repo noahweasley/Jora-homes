@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -19,11 +18,6 @@ class LandingPageScreen extends GetView<MainController> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -73,7 +67,7 @@ class LandingPageScreen extends GetView<MainController> {
                             ),
                           ),
                         ).animate().slideX(begin: -1),
-                        MyCircleAvatar(
+                        UniversalCircle(
                           backgroundColor: AppColor.primary,
                           child: Image.asset(
                             Assets.profile,

@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:jora_homes/bindings/main_binding.dart';
 import 'package:jora_homes/core/app_init.dart';
 import 'package:jora_homes/core/constants/app_theme.dart';
+import 'package:jora_homes/core/constants/strings.dart';
 import 'package:jora_homes/core/navigation/app_router.dart';
 import 'package:jora_homes/core/navigation/app_routes.dart';
 
@@ -24,9 +25,9 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           initialBinding: MainBinding(),
-          initialRoute: Routes.home,
+          initialRoute: Routes.extra,
           getPages: AppRouter.pages,
-          title: 'Jora Homes',
+          title: Strings.appName,
           theme: Themes.getTheme(Themes.lightThemeCode),
         );
       },

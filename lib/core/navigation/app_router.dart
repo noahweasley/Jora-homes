@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:jora_homes/bindings/main_binding.dart';
 import 'package:jora_homes/core/navigation/app_routes.dart';
+import 'package:jora_homes/screens/intro_screen.dart';
 import 'package:jora_homes/screens/main_screen.dart';
 
 class AppRouter {
@@ -10,6 +11,12 @@ class AppRouter {
       binding: MainBinding(),
       transition: Transition.fade,
       page: () => const MainScreen(),
+    ),
+    GetPage(
+      name: Routes.extra,
+      binding: MainBinding(),
+      transition: Transition.fade,
+      page: () => const IntroScreen(),
     ),
   ];
 }

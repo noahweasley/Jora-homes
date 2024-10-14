@@ -77,9 +77,9 @@ class _OfferCountState extends State<OfferCount> with SingleTickerProviderStateM
               children: [
                 Builder(
                   builder: (context) {
-                    final number_ = _animation.value;
+                    final number = _animation.value;
                     return Text(
-                      '$number_',
+                      number.toString(),
                       style: AppStyle.headline4.bold.apply(color: widget.textColor),
                     );
                   },
