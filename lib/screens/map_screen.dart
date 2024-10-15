@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jora_homes/controllers/main_controller.dart';
 import 'package:jora_homes/controllers/map_controller.dart';
 import 'package:jora_homes/core/constants/app_style.dart';
 import 'package:jora_homes/core/constants/assets.dart';
@@ -13,7 +12,6 @@ import 'package:jora_homes/core/constants/time.dart';
 import 'package:jora_homes/core/widgets/annotated_status_bar.dart';
 import 'package:jora_homes/core/widgets/map_markers.dart';
 import 'package:jora_homes/core/widgets/search_bar.dart';
-import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class MapScreen extends GetView<MapController> {
   const MapScreen({super.key});
@@ -80,52 +78,68 @@ class BottomActions extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(
-            onTap: onTap,
-            overlayColor: WidgetStateColor.resolveWith(
-              (states) => Colors.transparent,
-            ),
-            // TODO: Replace with icon
-            child: const UniversalCircle(
-              backgroundColor: Color.fromRGBO(116, 116, 116, 0.7),
-              child: Center(
-                child: Icon(
+          Material(
+            color: AppColor.circle2,
+            borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+            child: InkWell(
+              onTap: onTap,
+              customBorder: const CircleBorder(),
+              child: Padding(
+                padding: EdgeInsets.all(Dimensions.space1),
+                child: const Icon(
                   Icons.more_vert_rounded,
-                  color: AppColor.tabBarIconColor,
+                  color: Colors.white,
                 ),
               ),
-            ).animate().scale(duration: Time.animationDurationShort),
-          ),
+            ),
+          ).animate().scale(duration: Time.animationDurationShort),
           Dimensions.space1.verticalSpace,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               // TODO: Replace with icons
-              const UniversalCircle(
-                backgroundColor: AppColor.circle,
-                child: Icon(
-                  Icons.near_me_outlined,
-                  color: AppColor.tabBarIconColor,
-                ),
-              ).animate().scale(duration: Time.animationDurationShort),
-              // TOCO: Replace with icon
-              UniversalCircle(
-                backgroundColor: AppColor.circle2,
-                isRect: true,
-                child: Row(
-                  children: [
-                    Dimensions.space1.horizontalSpace,
-                    const Icon(
-                      Icons.sort,
+              Material(
+                color: AppColor.circle2,
+                borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+                child: InkWell(
+                  onTap: () {},
+                  customBorder: const CircleBorder(),
+                  child: Padding(
+                    padding: EdgeInsets.all(Dimensions.space1),
+                    child: const Icon(
+                      Icons.near_me_outlined,
                       color: Colors.white,
                     ),
-                    Dimensions.space1.horizontalSpace,
-                    Text(
-                     Strings.variations,
-                      style: AppStyle.body1.apply(color: Colors.white),
+                  ),
+                ),
+              ).animate().scale(duration: Time.animationDurationShort),
+              Material(
+                color: AppColor.circle2,
+                borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+                child: InkWell(
+                  onTap: () {},
+                  customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      Dimensions.borderRadiusLarge,
                     ),
-                    Dimensions.space1.horizontalSpace,
-                  ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(Dimensions.space8),
+                    child: Row(
+                      children: [
+                        Dimensions.space1.horizontalSpace,
+                        const Icon(
+                          Icons.sort,
+                          color: Colors.white,
+                        ),
+                        Dimensions.space1.horizontalSpace,
+                        Text(
+                          Strings.variations,
+                          style: AppStyle.body1.apply(color: Colors.white),
+                        ),
+                        Dimensions.space1.horizontalSpace,
+                      ],
+                    ),
+                  ),
                 ),
               ).animate().scale(duration: Time.animationDurationShort),
             ],
@@ -135,4 +149,3 @@ class BottomActions extends StatelessWidget {
     );
   }
 }
- 

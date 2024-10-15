@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jora_homes/core/constants/colors.dart';
 import 'package:jora_homes/core/constants/dimensions.dart';
 import 'package:jora_homes/core/constants/time.dart';
-import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class BottomNavigation extends StatefulWidget {
   final List<Widget> children;
@@ -172,13 +171,46 @@ class BottomBarIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return BottomNavIconContainer(
       onTap: () => onChanged(index),
-      child: UniversalCircle(
-        backgroundColor: currentIndex == index ? AppColor.primary : AppColor.tabBarSelectedBackground,
-        child: Icon(
-          icon,
-          color: Colors.white,
+      backgroundColor: currentIndex == index ? AppColor.primary : AppColor.tabBarSelectedBackground,
+      child: Icon(
+        icon,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class BottomNavIconContainer extends StatelessWidget {
+  final Color? backgroundColor;
+  final double? size;
+  final Widget? child;
+  final VoidCallback onTap;
+
+  const BottomNavIconContainer({
+    super.key,
+    this.backgroundColor,
+    this.size,
+    this.child,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+        child: AnimatedContainer(
+          duration: Time.animationDuration1,
+          width: size ?? Dimensions.iconSize2,
+          height: size ?? Dimensions.iconSize2,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            shape:  BoxShape.circle,
+          ),
+          child: child,
         ),
       ),
     );

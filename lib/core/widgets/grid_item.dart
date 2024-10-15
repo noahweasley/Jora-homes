@@ -9,7 +9,6 @@ import 'package:jora_homes/core/constants/colors.dart';
 import 'package:jora_homes/core/constants/dimensions.dart';
 import 'package:jora_homes/core/constants/strings.dart';
 import 'package:jora_homes/core/constants/time.dart';
-import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class GridItem extends StatelessWidget {
   final String image;
@@ -41,31 +40,30 @@ class GridItem extends StatelessWidget {
                   blur: 55,
                   height: Dimensions.slideBarHeight,
                   width: double.maxFinite,
-                  child: LayoutBuilder(
-                    builder: (context, _) {
-                      return Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              Strings.gridText,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: AppStyle.body2.apply(color: Colors.black),
-                            ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          Strings.gridText,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                          style: AppStyle.body2.apply(color: Colors.black),
+                        ),
+                      ),
+                      Material(
+                        color: AppColor.tabBarIconColor,
+                        borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+                        child: InkWell(
+                          onTap: () {},
+                          customBorder: const CircleBorder(),
+                          child: Icon(
+                            Icons.chevron_right_outlined,
+                            size: Dimensions.iconSize,
                           ),
-                          // TODO: remove
-                          UniversalCircle(
-                            size: Dimensions.slideBarHeight,
-                            backgroundColor: AppColor.tabBarIconColor,
-                            child: Icon(
-                              Icons.chevron_right_outlined,
-                              size: Dimensions.iconSize,
-                            ),
-                          ),
-                        ],
-                      );
-                    },
+                        ),
+                      ),
+                    ],
                   ),
                 ).animate().scaleX(
                     begin: -1,

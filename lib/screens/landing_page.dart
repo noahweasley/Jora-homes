@@ -12,7 +12,6 @@ import 'package:jora_homes/core/constants/strings.dart';
 import 'package:jora_homes/core/constants/time.dart';
 import 'package:jora_homes/core/widgets/grid_item.dart';
 import 'package:jora_homes/core/widgets/offer_count.dart';
-import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class LandingPageScreen extends GetView<MainController> {
   const LandingPageScreen({super.key});
@@ -70,14 +69,16 @@ class LandingPageScreen extends GetView<MainController> {
                             ),
                           ),
                         ).animate().slideX(begin: -1),
-                        // TODO: Remove
-                        UniversalCircle(
+                        CircleAvatar(
                           backgroundColor: AppColor.primary,
-                          child: Image.asset(
-                            Assets.profile,
-                            fit: BoxFit.scaleDown,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+                            child: Image.asset(
+                              Assets.profile,
+                              fit: BoxFit.scaleDown,
+                            ),
                           ),
-                        ).animate().scale()
+                        ).animate().scale(),
                       ],
                     ),
                     Dimensions.space2.verticalSpace,

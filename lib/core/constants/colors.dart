@@ -25,5 +25,5 @@ class AppColor {
   static const itemSelected = Color(0xFFFBAB40);
   static const itemUnSelected = Color(0xFF8C8984);
   static const circle = Color(0xB1747474);
-  static const circle2 = Color(0xFF747474);
+  static const circle2 = Color(0xDF5F5F5F);
 }

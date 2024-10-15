@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jora_homes/core/constants/dimensions.dart';
-import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class AnimatedSearchBar extends StatelessWidget {
   final Duration duration;
@@ -40,12 +39,19 @@ class AnimatedSearchBar extends StatelessWidget {
           ).animate().scale(duration: duration),
         ),
         Dimensions.space1.horizontalSpace,
-        // TODO: Replace with icon
-        UniversalCircle(
-          backgroundColor: Colors.white,
-          child: Icon(
-            Icons.tune,
-            size: Dimensions.iconSize3,
+        Material(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
+          child: InkWell(
+            onTap: () {},
+            customBorder: const CircleBorder(),
+            child: Padding(
+              padding: EdgeInsets.all(Dimensions.space1),
+              child: Icon(
+                Icons.tune,
+                size: Dimensions.iconSize3,
+              ),
+            ),
           ),
         ).animate().scale(duration: duration),
       ],

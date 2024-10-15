@@ -14,6 +14,7 @@ class Dimensions {
   
   static const double minSpace = 4;
   static double space1 = 8.r;
+  static double space8 = 10;
   static const double space2 = 16;
   static const double space3 = 24;
   static const double space4 = 32;
