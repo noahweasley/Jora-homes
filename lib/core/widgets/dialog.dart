@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jora_homes/core/constants/app_style.dart';
+import 'package:jora_homes/core/constants/colors.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/constants/time.dart';
 
 class DialogContent extends StatelessWidget {
   const DialogContent({super.key});
@@ -10,14 +14,14 @@ class DialogContent extends StatelessWidget {
     return Align(
       alignment: Alignment(-.85.w, 0.3.h),
       child: Material(
-        color: const Color.fromRGBO(251, 245, 235, 1),
+        color: AppColor.dialogBackground,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(Dimensions.borderRadius5),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: 20.w,
-            vertical: 10.h,
+            horizontal: Dimensions.space2.w,
+            vertical: Dimensions.space1.h,
           ),
           child: const Column(
             mainAxisSize: MainAxisSize.min,
@@ -46,7 +50,7 @@ class DialogContent extends StatelessWidget {
       ),
     ).animate().scale(
           alignment: const Alignment(-1, 1),
-          duration: const Duration(milliseconds: 100),
+          duration: Time.animationDurationMin,
         );
   }
 }
@@ -66,22 +70,19 @@ class DialogBoxText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 42.h,
+      height: Dimensions.dialogBoxTextHeight,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             icon,
-            color: selected ? const Color.fromRGBO(251, 171, 64, 1) : const Color.fromRGBO(140, 137, 132, 1),
+            color: selected ? AppColor.itemSelected : AppColor.itemUnSelected,
           ),
-          8.horizontalSpace,
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 15.sp,
-              color: selected ? const Color.fromRGBO(251, 171, 64, 1) : const Color.fromRGBO(140, 137, 132, 1),
-            ),
-          ),
+          Dimensions.space1.horizontalSpace,
+          Text(text,
+              style: AppStyle.button.apply(
+                color: selected ? AppColor.itemSelected : AppColor.itemUnSelected,
+              )),
         ],
       ),
     );

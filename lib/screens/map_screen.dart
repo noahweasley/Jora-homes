@@ -3,15 +3,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:jora_homes/controllers/main_controller.dart';
+import 'package:jora_homes/controllers/map_controller.dart';
 import 'package:jora_homes/core/constants/app_style.dart';
 import 'package:jora_homes/core/constants/assets.dart';
 import 'package:jora_homes/core/constants/colors.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/constants/strings.dart';
+import 'package:jora_homes/core/constants/time.dart';
 import 'package:jora_homes/core/widgets/annotated_status_bar.dart';
-import 'package:jora_homes/core/widgets/circle_avatar.dart';
 import 'package:jora_homes/core/widgets/map_markers.dart';
 import 'package:jora_homes/core/widgets/search_bar.dart';
+import 'package:jora_homes/core/widgets/universal_circle.dart';
 
-class MapScreen extends GetView<MainController> {
+class MapScreen extends GetView<MapController> {
   const MapScreen({super.key});
 
   @override
@@ -40,13 +44,13 @@ class MapScreen extends GetView<MainController> {
                 );
               }),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: Dimensions.space2),
                 child: Stack(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 50.0),
+                      padding: const EdgeInsets.only(top: Dimensions.space7),
                       child: AnimatedSearchBar(
-                        duration: controller.duration,
+                        duration: Time.animationDurationShort,
                       ),
                     ),
                     BottomActions(
@@ -70,8 +74,6 @@ class BottomActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const duration = Duration(milliseconds: 300);
-
     return Align(
       alignment: const Alignment(0, 0.7),
       child: Column(
@@ -83,6 +85,7 @@ class BottomActions extends StatelessWidget {
             overlayColor: WidgetStateColor.resolveWith(
               (states) => Colors.transparent,
             ),
+            // TODO: Replace with icon
             child: const UniversalCircle(
               backgroundColor: Color.fromRGBO(116, 116, 116, 0.7),
               child: Center(
@@ -91,38 +94,40 @@ class BottomActions extends StatelessWidget {
                   color: AppColor.tabBarIconColor,
                 ),
               ),
-            ).animate().scale(duration: duration),
+            ).animate().scale(duration: Time.animationDurationShort),
           ),
-          10.verticalSpace,
+          Dimensions.space1.verticalSpace,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+               // TODO: Replace with icons
               const UniversalCircle(
-                backgroundColor: Color.fromRGBO(116, 116, 116, 0.7),
+                backgroundColor: AppColor.circle,
                 child: Icon(
                   Icons.near_me_outlined,
                   color: AppColor.tabBarIconColor,
                 ),
-              ).animate().scale(duration: duration),
+              ).animate().scale(duration: Time.animationDurationShort),
+              // TOCO: Replace with icon
               UniversalCircle(
-                backgroundColor: const Color.fromRGBO(116, 116, 116, 1),
+                backgroundColor: AppColor.circle2,
                 isRect: true,
                 child: Row(
                   children: [
-                    12.horizontalSpace,
+                    Dimensions.space1.horizontalSpace,
                     const Icon(
                       Icons.sort,
-                      color: Colors.white54,
+                      color: Colors.white,
                     ),
-                    8.horizontalSpace,
+                    Dimensions.space1.horizontalSpace,
                     Text(
-                      'List of variations',
+                     Strings.variations,
                       style: AppStyle.body1.apply(color: Colors.white),
                     ),
-                    12.horizontalSpace,
+                    Dimensions.space1.horizontalSpace,
                   ],
                 ),
-              ).animate().scale(duration: const Duration(milliseconds: 300)),
+              ).animate().scale(duration: Time.animationDurationShort),
             ],
           ),
         ],
@@ -130,3 +135,4 @@ class BottomActions extends StatelessWidget {
     );
   }
 }
+ 

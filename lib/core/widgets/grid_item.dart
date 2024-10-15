@@ -6,7 +6,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jora_homes/core/constants/app_style.dart';
 import 'package:jora_homes/core/constants/colors.dart';
-import 'package:jora_homes/core/widgets/circle_avatar.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/constants/strings.dart';
+import 'package:jora_homes/core/constants/time.dart';
+import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class GridItem extends StatelessWidget {
   final String image;
@@ -19,9 +22,9 @@ class GridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20.r),
+      borderRadius: BorderRadius.circular(Dimensions.borderRadius5),
       child: SizedBox(
-        height: 200.h,
+        height: Dimensions.gridItemHeight,
         child: Stack(
           children: [
             Positioned.fill(
@@ -33,10 +36,10 @@ class GridItem extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: EdgeInsets.all(8.r),
+                padding: EdgeInsets.all(Dimensions.space1.r),
                 child: BlurryContainer(
                   blur: 55,
-                  height: 40.r,
+                  height: Dimensions.slideBarHeight,
                   width: double.maxFinite,
                   child: LayoutBuilder(
                     builder: (context, _) {
@@ -44,19 +47,20 @@ class GridItem extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              '25 Gladkova Street Yorshire, New York, London',
+                              Strings.gridText,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: AppStyle.body2.apply(color: Colors.black),
                             ),
                           ),
+                          // TODO: remove
                           UniversalCircle(
-                            size: 40.r,
+                            size: Dimensions.slideBarHeight,
                             backgroundColor: AppColor.tabBarIconColor,
-                            child: const Icon(
+                            child: Icon(
                               Icons.chevron_right_outlined,
-                              size: 15,
+                              size: Dimensions.iconSize,
                             ),
                           ),
                         ],
@@ -64,12 +68,11 @@ class GridItem extends StatelessWidget {
                     },
                   ),
                 ).animate().scaleX(
-                      delay: math.Random().nextInt(3).seconds,
-                      duration: 0.9.seconds,
-                      begin: -1,
-                      alignment: Alignment.centerLeft,
-                      curve: Curves.easeIn
-                    ),
+                    begin: -1,
+                    delay: math.Random().nextInt(3).seconds,
+                    duration: Time.animationDurationLong,
+                    alignment: Alignment.centerLeft,
+                    curve: Curves.easeIn),
               ),
             )
           ],

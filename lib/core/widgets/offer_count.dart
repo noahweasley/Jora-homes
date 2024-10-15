@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jora_homes/core/constants/app_style.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/constants/strings.dart';
+import 'package:jora_homes/core/constants/time.dart';
 
 class OfferCount extends StatefulWidget {
   final double height;
@@ -27,22 +30,22 @@ class OfferCount extends StatefulWidget {
 }
 
 class _OfferCountState extends State<OfferCount> with SingleTickerProviderStateMixin {
-  late int number;
+  late int rand;
   late AnimationController _animationController;
   late Animation<int> _animation;
 
   @override
   void initState() {
     super.initState();
-    number = Random().nextInt(9999);
+    rand = Random().nextInt(9999);
     _animationController = AnimationController(
       vsync: this,
-      duration: 1.5.seconds,
-      reverseDuration: 1.5.seconds,
+      duration: Time.animationDurationLonger,
+      reverseDuration: Time.animationDurationLonger,
     )..addListener(() {
         setState(() {});
       });
-    _animation = IntTween(begin: 1, end: number).animate(_animationController);
+    _animation = IntTween(begin: 1, end: rand).animate(_animationController);
     _animationController.forward();
   }
 
@@ -58,12 +61,12 @@ class _OfferCountState extends State<OfferCount> with SingleTickerProviderStateM
       height: widget.height,
       decoration: BoxDecoration(
         shape: widget.shape,
-        borderRadius: widget.shape == BoxShape.rectangle ? BorderRadius.circular(20.r) : null,
+        borderRadius: widget.shape == BoxShape.rectangle ? BorderRadius.circular(Dimensions.borderRadius5) : null,
         color: widget.backgroundColor,
       ),
       child: Column(
         children: [
-          20.verticalSpace,
+          Dimensions.space2.verticalSpace,
           Expanded(
             flex: 1,
             child: Text(
@@ -77,15 +80,14 @@ class _OfferCountState extends State<OfferCount> with SingleTickerProviderStateM
               children: [
                 Builder(
                   builder: (context) {
-                    final number = _animation.value;
                     return Text(
-                      number.toString(),
+                      _animation.value.toString(),
                       style: AppStyle.headline4.bold.apply(color: widget.textColor),
                     );
                   },
                 ),
                 Text(
-                  'offers',
+                  Strings.offers,
                   style: AppStyle.title.apply(
                     color: widget.textColor,
                   ),
@@ -95,6 +97,6 @@ class _OfferCountState extends State<OfferCount> with SingleTickerProviderStateM
           ),
         ],
       ),
-    ).animate().scale(duration: 0.5.seconds);
+    ).animate().scale(duration: Time.animationDuration0);
   }
 }

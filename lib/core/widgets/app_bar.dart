@@ -55,9 +55,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onTap: onNavigateUp,
                     customBorder: const CircleBorder(),
                     child: leadingIcon ??
-                        const Icon(
+                        Icon(
                           Icons.close,
-                          size: 24,
+                          size: Dimensions.iconSize,
                           color: Colors.white,
                         ),
                   ),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jora_homes/core/constants/time.dart';
 
 class MapMarkers extends StatelessWidget {
   final bool isClicked;
@@ -56,8 +57,8 @@ class MapMarkers extends StatelessWidget {
                     color: Colors.white,
                   ),
           ).animate().scale(
-                delay: 0.4.seconds,
-                duration: 0.5.seconds,
+                delay: Time.animationDelayShort,
+                duration: Time.animationDuration0,
               ),
         ),
       ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jora_homes/core/widgets/circle_avatar.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class AnimatedSearchBar extends StatelessWidget {
   final Duration duration;
@@ -18,13 +19,13 @@ class AnimatedSearchBar extends StatelessWidget {
         Expanded(
           child: Container(
             padding: EdgeInsets.symmetric(
-              horizontal: 20.w,
-              vertical: 12.h,
+              horizontal: Dimensions.space2.w,
+              vertical: Dimensions.space1.h,
             ),
             decoration: ShapeDecoration(
-              color: const Color.fromRGBO(255, 255, 255, 1),
+              color: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.r),
+                borderRadius: BorderRadius.circular(Dimensions.borderRadius6),
               ),
             ),
             child: Row(
@@ -32,18 +33,19 @@ class AnimatedSearchBar extends StatelessWidget {
                 const Icon(
                   Icons.search,
                 ),
-                10.horizontalSpace,
+                Dimensions.space1.horizontalSpace,
                 const Text('Saint Petersburg')
               ],
             ),
           ).animate().scale(duration: duration),
         ),
-        8.horizontalSpace,
+        Dimensions.space1.horizontalSpace,
+        // TODO: Replace with icon
         UniversalCircle(
           backgroundColor: Colors.white,
           child: Icon(
             Icons.tune,
-            size: 18.sp,
+            size: Dimensions.iconSize3,
           ),
         ).animate().scale(duration: duration),
       ],

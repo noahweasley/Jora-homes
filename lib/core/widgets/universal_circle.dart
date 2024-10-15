@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/constants/time.dart';
 
 class UniversalCircle extends StatelessWidget {
   final Color? backgroundColor;
   final double? size;
   final Widget? child;
   final bool isRect;
-  
+
   const UniversalCircle({
     super.key,
     this.backgroundColor,
@@ -19,11 +19,11 @@ class UniversalCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(100.r),
+      borderRadius: BorderRadius.circular(Dimensions.borderRadiusLarge),
       child: AnimatedContainer(
-        duration: 0.6.seconds,
-        width: isRect ? null : (size ?? 45).r,
-        height: (size ?? 45).r,
+        duration: Time.animationDuration1,
+        width: isRect ? null : (size ?? Dimensions.iconSize2),
+        height: (size ?? Dimensions.iconSize2),
         decoration: BoxDecoration(
           color: backgroundColor,
           shape: isRect ? BoxShape.rectangle : BoxShape.circle,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jora_homes/core/constants/app_style.dart';
 import 'package:jora_homes/core/constants/colors.dart';
 import 'package:jora_homes/core/constants/dimensions.dart';
@@ -38,7 +37,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.maxFinite,
-      height: height ?? 47.sp,
+      height: height ?? Dimensions.buttonSize,
       child: Material(
         color: buttonColor,
         shape: RoundedRectangleBorder(
@@ -62,14 +61,11 @@ class AppButton extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: SizedBox(
-              height: 20.sp,
-              child: Text(
-                text,
-                textAlign: TextAlign.center,
-                style: AppStyle.button.apply(
-                  color: textColor,
-                ),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: AppStyle.button.apply(
+                color: textColor,
               ),
             ),
           ),

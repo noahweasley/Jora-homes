@@ -7,9 +7,12 @@ import 'package:jora_homes/controllers/main_controller.dart';
 import 'package:jora_homes/core/constants/app_style.dart';
 import 'package:jora_homes/core/constants/assets.dart';
 import 'package:jora_homes/core/constants/colors.dart';
-import 'package:jora_homes/core/widgets/circle_avatar.dart';
+import 'package:jora_homes/core/constants/dimensions.dart';
+import 'package:jora_homes/core/constants/strings.dart';
+import 'package:jora_homes/core/constants/time.dart';
 import 'package:jora_homes/core/widgets/grid_item.dart';
 import 'package:jora_homes/core/widgets/offer_count.dart';
+import 'package:jora_homes/core/widgets/universal_circle.dart';
 
 class LandingPageScreen extends GetView<MainController> {
   const LandingPageScreen({super.key});
@@ -27,13 +30,13 @@ class LandingPageScreen extends GetView<MainController> {
           ),
         ),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(top: 45.h),
+          padding: EdgeInsets.only(top: Dimensions.space6.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
+                  horizontal: Dimensions.space2.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,10 +48,10 @@ class LandingPageScreen extends GetView<MainController> {
                           decoration: ShapeDecoration(
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.r),
+                              borderRadius: BorderRadius.circular(Dimensions.borderRadius1),
                             ),
                           ),
-                          padding: EdgeInsets.all(8.r),
+                          padding: EdgeInsets.all(Dimensions.space1.r),
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Row(
@@ -56,17 +59,18 @@ class LandingPageScreen extends GetView<MainController> {
                                 Icon(
                                   Icons.location_on,
                                   color: AppColor.text1,
-                                  size: 16.sp,
+                                  size: Dimensions.iconSize1.sp,
                                 ),
-                                4.horizontalSpace,
+                                Dimensions.minSpace.horizontalSpace,
                                 Text(
-                                  'Saint Petersburg',
+                                  Strings.userLocation,
                                   style: AppStyle.title.apply(color: AppColor.text1),
                                 )
                               ],
                             ),
                           ),
                         ).animate().slideX(begin: -1),
+                        // TODO: Remove
                         UniversalCircle(
                           backgroundColor: AppColor.primary,
                           child: Image.asset(
@@ -76,25 +80,25 @@ class LandingPageScreen extends GetView<MainController> {
                         ).animate().scale()
                       ],
                     ),
-                    20.verticalSpace,
+                    Dimensions.space2.verticalSpace,
                     Text(
-                      'Hi, Marina',
+                      Strings.greeting,
                       style: AppStyle.body1.apply(color: AppColor.text1),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * (7 / 10),
                       child: Text(
-                        'let\'s select your perfect place',
+                        Strings.selectDate,
                         style: AppStyle.headline4.apply(color: AppColor.text4),
                       ),
                     ).animate().slideY(begin: 0.5),
-                    35.verticalSpace,
+                    Dimensions.space4.verticalSpace,
                     Row(
                       children: [
                         Expanded(
                           child: LayoutBuilder(builder: (context, constraints) {
                             return OfferCount(
-                              text: 'BUY',
+                              text: Strings.buy,
                               shape: BoxShape.circle,
                               height: constraints.maxWidth,
                               backgroundColor: AppColor.primary,
@@ -102,13 +106,13 @@ class LandingPageScreen extends GetView<MainController> {
                             );
                           }),
                         ),
-                        10.horizontalSpace,
+                        Dimensions.space1.horizontalSpace,
                         Expanded(
                           child: LayoutBuilder(
                             builder: (context, constraints) {
                               return OfferCount(
                                 textColor: AppColor.text1,
-                                text: 'RENT',
+                                text: Strings.rent,
                                 shape: BoxShape.rectangle,
                                 height: constraints.maxWidth,
                                 backgroundColor: AppColor.background2,
@@ -121,9 +125,9 @@ class LandingPageScreen extends GetView<MainController> {
                   ],
                 ),
               ),
-              30.verticalSpace,
+              Dimensions.space4.verticalSpace,
               Container(
-                padding: EdgeInsets.all(8.r),
+                padding: EdgeInsets.all(Dimensions.space1.r),
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -172,8 +176,8 @@ class LandingPageScreen extends GetView<MainController> {
                 ),
               ).animate().moveY(
                     begin: 400,
-                    duration: 0.6.seconds,
-                    delay: 1.seconds,
+                    duration: Time.animationDuration1,
+                    delay: Time.animationDelayLong,
                   ),
             ],
           ),
