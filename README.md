@@ -27,13 +27,11 @@ To get started with the project, follow the steps below:
    ```
    git clone https://github.com/noahweasley/jora-homes.git
    ```
-
 2. Navigate to the project directory:
 
    ```
    cd jora-homes
    ```
-
 3. Fetch the dependencies by running the following command:
 
    ```
@@ -75,7 +73,7 @@ flutter build apk
 To build for Android splitting the ABIs, execute the following command in the project directory:
 
 ```
-flutter build apk --split-abis
+flutter build apk --split-per-abi
 ```
 
 _Gradle download and some other project configurations would be performed in the background, so make sure you are connected to a stable internet connection_
